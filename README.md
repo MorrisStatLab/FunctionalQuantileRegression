@@ -18,7 +18,7 @@ File structure:
 - For selected other methods: R version 3.2.2 or later (the packages “quantreg”, “coda” and “FDboost” are needed).
 
 ## Example
-Please refer to ```readme_data_and_code_description.docx``` for 
+Please refer to ```Reproducibility.md``` for 
 - instructions of how to reproduce results in the paper including both simulations and real data application 
 - descriptions of the real data 
 
