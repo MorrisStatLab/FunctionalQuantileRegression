@@ -13,10 +13,14 @@ File structure:
 - The subfolder “BayesianQR/” contains a set of MATLAB scripts to implement the naïve Bayesian Quantile Regression. These scripts are called when running this naïve approach on the real or simulation datasets.
 - Other scripts or files not described above are either auxiliary functions used for plot or ROC analysis, or various output from running the scripts above.
 
-
+## Example
 Please refer to ```readme_data_and_code_description.docx``` for 
 - instructions of how to reproduce results in the paper including both simulations and real data application 
 - descriptions of the real data 
+
+## Reproducibility 
+
+All the figures and tables in the paper can be reproduced by running the provided code. Note that to reproduce Table 2 that summarizes the simulation performance for various methods, the posterior (or bootstrap) samples obtained by each approach at each considered quantile level based on each of 100 replicate datasets in each simulation setting are needed. Please refer to ```reproducibility.txt``` for more details about how to fully reproduce results in the paper. 
 
 ## Reference
 
