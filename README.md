@@ -8,6 +8,11 @@ This repository provides
 - the code to reproduce all the figures in the manuscript and the supplementary
 - the code to adjust for block effects from the preprocessed mass spectrometry data and to generate the simulation datasets
 
+File structure: 
+- The subfolder “BayesianFQR/” contains a set of MATLAB scripts to implement the Bayesian FQR model with discrete wavelet transform (DWT) on regression coefficient functions and a horseshoe prior on wavelet coefficients. These scripts are called when performing FQR on the real or simulation datasets.
+- The subfolder “BayesianQR/” contains a set of MATLAB scripts to implement the naïve Bayesian Quantile Regression. These scripts are called when running this naïve approach on the real or simulation datasets.
+- Other scripts or files not described above are either auxiliary functions used for plot or ROC analysis, or various output from running the scripts above.
+
 
 Please refer to ```readme_data_and_code_description.docx``` for 
 - instructions of how to reproduce results in the paper including both simulations and real data application 
