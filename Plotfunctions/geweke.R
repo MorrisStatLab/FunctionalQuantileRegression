@@ -6,7 +6,7 @@ geweke <- function(qt)
 
 
    # pvalues from Geweke test on posterior samples of Beta_2(t) at all t
-   MCMC_betat <- read.table(paste0("Y:/submission/realdata/output/HS/MCMC_betat_",qt*100,".txt"),header=FALSE,sep='\t')
+   MCMC_betat <- read.table(paste0("realdata/output/HS/MCMC_betat_",qt*100,".txt"),header=FALSE,sep='\t')
 
    betat <- rep(NA,ncol(MCMC_betat))
 
@@ -19,7 +19,7 @@ geweke <- function(qt)
 
 
    # pvalues from Geweke test on posterior samples of sigma(t) at all t
-   MCMC_sigma <- read.table(paste0("Y:/submission/realdata/output/HS/MCMC_sigma_",qt*100,".txt"),header=FALSE,sep='\t')
+   MCMC_sigma <- read.table(paste0("realdata/output/HS/MCMC_sigma_",qt*100,".txt"),header=FALSE,sep='\t')
 
    sigma <- rep(NA,ncol(MCMC_sigma))
 
@@ -33,7 +33,7 @@ geweke <- function(qt)
 
    names(pvalue) <- c("betat","sigma")
 
-   save(pvalue,file=paste0("Y:/submission/realdata/output/geweke_pvalues_Bayesian_FQR_qt",qt*100,".Rdata"))
+   save(pvalue,file=paste0("realdata/output/geweke_pvalues_Bayesian_FQR_qt",qt*100,".Rdata"))
 
 
    # calculate the proportion of pvalues below 0.05 and 0.1
