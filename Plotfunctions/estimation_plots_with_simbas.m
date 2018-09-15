@@ -1,7 +1,7 @@
 function g=estimation_plots_with_simbas(x0,qt,alpha,delta)
 
 %% Bayesian QR
-MCMC_P1=dlmread(sprintf('Y:/submission/realdata/output/QR/MCMC_betat_%d.txt',qt*100));
+MCMC_P1=dlmread(sprintf('realdata/output/QR/MCMC_betat_%d.txt',qt*100));
 [SimBaS1,upr1,lwr1]=jointband_simbas(MCMC_P1,alpha);
 upr1_pt=mean(MCMC_P1)+1.96*std(MCMC_P1);
 lwr1_pt=mean(MCMC_P1)-1.96*std(MCMC_P1);
@@ -11,7 +11,7 @@ flag1=flag_contiguous_sites(flag1);
 idx1=find(flag1~=0);
 
 %% FQR + Horseshoe Prior
-MCMC_P2=dlmread(sprintf('Y:/submission/realdata/output/HS/MCMC_betat_%d.txt',qt*100));
+MCMC_P2=dlmread(sprintf('realdata/output/HS/MCMC_betat_%d.txt',qt*100));
 [SimBaS2,upr2,lwr2]=jointband_simbas(MCMC_P2,alpha);
 upr2_pt=mean(MCMC_P2)+1.96*std(MCMC_P2);
 lwr2_pt=mean(MCMC_P2)-1.96*std(MCMC_P2);
@@ -21,7 +21,7 @@ flag2=flag_contiguous_sites(flag2);
 idx2=find(flag2~=0);
 
 %% Bootstrap-based QR 
-MCMC_P3=dlmread(sprintf('Y:/submission/realdata/output/freqQR/raw/BS_betat_%d.txt',qt*100));
+MCMC_P3=dlmread(sprintf('realdata/output/freqQR/raw/BS_betat_%d.txt',qt*100));
 [SimBaS3,upr3,lwr3]=jointband_simbas(MCMC_P3,alpha);
 upr3_pt=mean(MCMC_P3)+1.96*std(MCMC_P3);
 lwr3_pt=mean(MCMC_P3)-1.96*std(MCMC_P3);
@@ -31,7 +31,7 @@ flag3=flag_contiguous_sites(flag3);
 idx3=find(flag3~=0);
 
 %% Bootstrap-based QR with spline smoothing
-MCMC_P4=dlmread(sprintf('Y:/submission/realdata/output/freqQR/splines/BS_betat_%d.txt',qt*100));
+MCMC_P4=dlmread(sprintf('realdata/output/freqQR/splines/BS_betat_%d.txt',qt*100));
 [SimBaS4,upr4,lwr4]=jointband_simbas(MCMC_P4,alpha);
 upr4_pt=mean(MCMC_P4)+1.96*std(MCMC_P4);
 lwr4_pt=mean(MCMC_P4)-1.96*std(MCMC_P4);
@@ -41,7 +41,7 @@ flag4=flag_contiguous_sites(flag4);
 idx4=find(flag4~=0);
 
 %% Bootstrap-based QR with wavelet denoising
-MCMC_P5=dlmread(sprintf('Y:/submission/realdata/output/freqQR/wavelets/BS_betat_%d.txt',qt*100));
+MCMC_P5=dlmread(sprintf('realdata/output/freqQR/wavelets/BS_betat_%d.txt',qt*100));
 [SimBaS5,upr5,lwr5]=jointband_simbas(MCMC_P5,alpha);
 upr5_pt=mean(MCMC_P5)+1.96*std(MCMC_P5);
 lwr5_pt=mean(MCMC_P5)-1.96*std(MCMC_P5);
