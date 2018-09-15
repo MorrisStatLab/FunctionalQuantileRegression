@@ -1,5 +1,7 @@
 clear;
 
+%% Assume you are in the subfolder "Figures/" now. May need to change path if necessary.
+
 %% Figure 1
 load('../realdata/ProteomicsData.mat');
 
