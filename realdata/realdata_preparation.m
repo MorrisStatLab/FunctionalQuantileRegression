@@ -1,15 +1,17 @@
 clear; 
 
+% Assume you are in the parent directory right now. May need to change path if necessary.
+
 % load in the mass spectrometry data that have been preprocessed, including
 % baseline correction, normalization, denoising and log2 transformation.
 % The preprocessed dataset that we start from covers the spectral region
 % [4000D, 19154D] and includes 6654 observations per spectrum.
-load('Y:/submission/realdata/ProteomicsData.mat');  
+load('./realdata/ProteomicsData.mat');  
 
 %% block effect adjustment
 
 % add the path of the code needed for block effect adjustment
-addpath('Y:/submission/MLEfunctions');
+addpath('./MLEfunctions');
 
 status=zeros(size(Y_6654,1),1);
 
@@ -101,7 +103,7 @@ X_adjusted(:,2)=vertcat(model1.X(:,2),model2.X(:,2),model3.X(:,2),model4.X(:,2))
 % adjusted dataset and do basis transform
 
 % add the path of the code for wavelet transform
-addpath('Y:/submission/Code for dwt and idwt');
+addpath('./Code for dwt and idwt');
 
 % the subset corresponding to [5000D,8000D]
 [n,p]=size(X_adjusted);
@@ -142,9 +144,9 @@ wavespecs.W1t=sparse(W1t);
 model.wavespecs=wavespecs;
 
 %% save the struct to mat file and txt files
-save('Y:/submission/realdata/model.mat','model');
+save('./realdata/model.mat','model');
 
-dlmwrite('Y:/submission/realdata/Y.txt',model.Y,'delimiter','\t','precision','%12.6e');
-dlmwrite('Y:/submission/realdata/X.txt',model.X,'delimiter','\t','precision','%12.6e');
-dlmwrite('Y:/submission/realdata/x0.txt',model.x0,'delimiter','\t','precision','%12.6e');
+dlmwrite('./realdata/Y.txt',model.Y,'delimiter','\t','precision','%12.6e');
+dlmwrite('./realdata/X.txt',model.X,'delimiter','\t','precision','%12.6e');
+dlmwrite('./realdata/x0.txt',model.x0,'delimiter','\t','precision','%12.6e');
 
