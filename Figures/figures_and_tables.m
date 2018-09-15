@@ -1,7 +1,7 @@
 clear;
 
 %% Figure 1
-load('Y:/submission/realdata/ProteomicsData.mat');
+load('../realdata/ProteomicsData.mat');
 
 % x_12096 and Yraw refer to the spectral locations (in Daltons) and  
 % functional responses of the raw (i.e. unpreprocessed) spectrometry   
@@ -54,9 +54,9 @@ close(g)
 clear;
 
 %% Figure 2
-x0=dlmread('Y:/submission/realdata/x0.txt');
-X=dlmread('Y:/submission/realdata/X.txt');
-Y=dlmread('Y:/submission/realdata/Y.txt');
+x0=dlmread('../realdata/x0.txt');
+X=dlmread('../realdata/X.txt');
+Y=dlmread('../realdata/Y.txt');
 
 [n,p]=size(X);
 T=size(Y,2);
@@ -120,15 +120,15 @@ legend([h2a h2b h2c h2d h2e h2f],{'mean','0.1','0.25','0.5','0.75','0.9'})
 legend('boxoff')
 hold off
 
-savefig(g,'Y:/submission/Figure2.fig')
+savefig(g,'./Figure2.fig')
 close(g)
 
 clear;
 
 %% Figure 3
-x0=dlmread('Y:/submission/simulations1/x0.txt');
+x0=dlmread('../simulations1/x0.txt');
 
-beta2=dlmread('Y:/submission/simulations1/beta2.txt');
+beta2=dlmread('../simulations1/beta2.txt');
 
 g=figure;
 
@@ -146,9 +146,9 @@ legend('0.1','0.2','0.5','0.8','0.9')
 legend('boxoff')
 hold off
 
-x0=dlmread('Y:/submission/simulations2/x0.txt');
+x0=dlmread('../simulations2/x0.txt');
 
-beta2=dlmread('Y:/submission/simulations2/beta2.txt');
+beta2=dlmread('../simulations2/beta2.txt');
 
 subplot(2,2,2)
 plot(x0,beta2(1,:),'b-')
@@ -167,7 +167,7 @@ hold off
 
 subplot(2,2,3)
 
-load('Y:/submission/simulations1/data/model1.mat')
+load('../simulations1/data/model1.mat')
 
 plot(model.x0,model.Y(1,:),'r-.')
 hold on
@@ -182,7 +182,7 @@ hold off
 
 subplot(2,2,4)
 
-load('Y:/submission/simulations2/data/model1.mat')
+load('../simulations2/data/model1.mat')
 
 plot(model.x0,model.Y(146,:),'r-.')
 hold on
@@ -194,24 +194,24 @@ legend('Group 1','Group 2','location','Northeast')
 legend('boxoff')
 hold off
 
-savefig(g,'Y:/submission/Figure3.fig')
+savefig(g,'./Figure3.fig')
 close(g)
 
 clear;
 
 %% Figure 4
-addpath('Y:/submission/Plotfunctions');
+addpath('../Plotfunctions');
 
 alpha=0.05;
 delta=log2(1.5)/2;
 
-x0=dlmread('Y:/submission/realdata/x0.txt');
-Y=dlmread('Y:/submission/realdata/Y.txt');
+x0=dlmread('../realdata/x0.txt');
+Y=dlmread('../realdata/Y.txt');
 
 qt=0.9;
 
 % Bayesian FQR
-MCMC_P1=dlmread(sprintf('Y:/submission/realdata/output/HS/MCMC_betat_%d.txt',qt*100));
+MCMC_P1=dlmread(sprintf('../realdata/output/HS/MCMC_betat_%d.txt',qt*100));
 [SimBaS1,upr1,lwr1]=jointband_simbas(MCMC_P1,alpha);
 upr1_pt=mean(MCMC_P1)+1.96*std(MCMC_P1);
 lwr1_pt=mean(MCMC_P1)-1.96*std(MCMC_P1);
@@ -221,7 +221,7 @@ flag1=flag_contiguous_sites(flag1);
 idx1=find(flag1~=0);
 
 % QR with wavelet denoising
-MCMC_P2=dlmread(sprintf('Y:/submission/realdata/output/freqQR/wavelets/BS_betat_%d.txt',qt*100));
+MCMC_P2=dlmread(sprintf('../realdata/output/freqQR/wavelets/BS_betat_%d.txt',qt*100));
 [SimBaS2,upr2,lwr2]=jointband_simbas(MCMC_P2,alpha);
 upr2_pt=mean(MCMC_P2)+1.96*std(MCMC_P2);
 lwr2_pt=mean(MCMC_P2)-1.96*std(MCMC_P2);
@@ -231,7 +231,7 @@ flag2=flag_contiguous_sites(flag2);
 idx2=find(flag2~=0);
 
 % GFMM mean regression 
-MCMC_P3=dlmread('Y:/submission/realdata/output/GFMM/MCMC_betat.txt');
+MCMC_P3=dlmread('../realdata/output/GFMM/MCMC_betat.txt');
 [SimBaS3,upr3,lwr3]=jointband_simbas(MCMC_P3,alpha);
 upr3_pt=mean(MCMC_P3)+1.96*std(MCMC_P3);
 lwr3_pt=mean(MCMC_P3)-1.96*std(MCMC_P3);
@@ -317,8 +317,8 @@ hold off
 
 orient(g,'tall')
 
-savefig(g,'Y:/submission/Figure4.fig')
+savefig(g,'./Figure4.fig')
 close(g)
 
 clear;
-rmpath('Y:/submission/Plotfunctions');
+rmpath('../Plotfunctions');
