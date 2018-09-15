@@ -29,21 +29,24 @@ load('simulations1/data/model1.mat');
 % Add the path of the functions needed to run Bayesian FQR     
 addpath('BayesianFQR');
 
-% Specify MCMCspecs, and the quantile level desired     
-MCMCspecs.minVC=1e-6;
-MCMCspecs.maxO=1e20;
-MCMCspecs.B=2000;
-MCMCspecs.burnin=2000;
-MCMCspecs.thin=3;
-MCMCspecs.blocksize=2000;
+% Specify MCMCspecs, the quantile level desired, and the random seed for reproducibility.        
+MCMCspecs.minVC=1e-6;     
+MCMCspecs.maxO=1e20;     
+MCMCspecs.B=2000;     
+MCMCspecs.burnin=2000;     
+MCMCspecs.thin=3;     
+MCMCspecs.blocksize=2000;     
 
-qt=0.9;  
-seed=100;  
+qt=0.9;       
+seed=100;     
   
-% call Bayesian FQR and get posterior samples for the coefficient function corresponding to the group difference    
+% Call Bayesian FQR and get posterior samples     
+% It takes about 20 minutes to run on a 64-bit operating system with 2 processors and 256GB RAM       
 result=FQR_HS(model, qt, MCMCspecs, seed);     
-MCMC_betat=result.MCMC_betat;    
-MCMC_P=MCMC_betat(:,(model.T+1):end); % MCMC_P is a _B_ by _T_ matrix containing _B_ posterior samples   
+MCMC_betat=result.MCMC_betat;   
+
+% MCMC_P is a _B_ by _T_ matrix containing _B_ posterior samples for the regression coefficient function coding the group difference.        
+MCMC_P=MCMC_betat(:,(model.T+1):end);    
 
 
 ## Reproducibility 
