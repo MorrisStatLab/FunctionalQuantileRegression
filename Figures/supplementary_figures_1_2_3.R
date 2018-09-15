@@ -1,7 +1,7 @@
 # To reproduce Figure S1-S3, posterior samples for betat and sigma obtained by
 # Bayesian FQR based on the proteomics dataset at each quantile are needed. We do not
 # provide them due to space considerations, but they are available upon request,
-# and users can also refer to submission/realdata/realdata_modelfit.m to generate them.
+# and users can also refer to realdata/realdata_modelfit.m to generate them.
 
 # Assume you are in the subfolder "Figures/" now. May need to change path if necessary.
 
