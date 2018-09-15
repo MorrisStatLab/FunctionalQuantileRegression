@@ -3,10 +3,9 @@
 # provide them due to space considerations, but they are available upon request,
 # and users can also refer to submission/realdata/realdata_modelfit.m to generate them.
 
+# Assume you are in the subfolder "Figures/" now. May need to change path if necessary.
 
 # Figure S1 and S2
-
-setwd("./")
 
 source("../Plotfunctions/traceplot.R")
 
