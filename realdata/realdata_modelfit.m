@@ -1,10 +1,12 @@
 clear;
 
+% Assume you are in the parent directory right now. May need to change path if necessary.
+
 % the quantile levels
 qt=[0.1 0.25 0.5 0.75 0.9];
 
 % load in data
-load('Y:/submission/realdata/model.mat');
+load('./realdata/model.mat');
 
 % MCMC specifications 
 MCMCspecs.minVC=1e-6;
@@ -20,7 +22,7 @@ MCMCspecs.time_update=1000;
 %% Bayesian FQR
 
 % add the path of the functions needed to run Bayesian FQR
-addpath('Y:/submission/BayesianFQR');
+addpath('./BayesianFQR');
 
 % for space considerations, we only provided the posterior samples for 
 % betat at qt=0.9, which is used to plot Figure 4 in the paper. However,
@@ -44,19 +46,19 @@ for i=1:5
     MCMC_beta=MCMC_beta(:,(model.wavespecs.K+1):end);
     MCMC_lambda2=MCMC_lambda2(:,(model.wavespecs.K+1):end);
     MCMC_tau2=MCMC_tau2(:,(model.wavespecs.J+1):end);
-    dlmwrite(sprintf('Y:/submission/realdata/output/HS/MCMC_betat_%d.txt',qt(i)*100),MCMC_betat,'delimiter','\t','precision','%12.6e');
-    dlmwrite(sprintf('Y:/submission/realdata/output/HS/MCMC_beta_%d.txt',qt(i)*100),MCMC_beta,'delimiter','\t','precision','%12.6e');
-    dlmwrite(sprintf('Y:/submission/realdata/output/HS/MCMC_lambda2_%d.txt',qt(i)*100),MCMC_lambda2,'delimiter','\t','precision','%12.6e');
-    dlmwrite(sprintf('Y:/submission/realdata/output/HS/MCMC_tau2_%d.txt',qt(i)*100),MCMC_tau2,'delimiter','\t','precision','%12.6e');
-    dlmwrite(sprintf('Y:/submission/realdata/output/HS/MCMC_sigma_%d.txt',qt(i)*100),MCMC_sigma,'delimiter','\t','precision','%12.6e');
+    dlmwrite(sprintf('./realdata/output/HS/MCMC_betat_%d.txt',qt(i)*100),MCMC_betat,'delimiter','\t','precision','%12.6e');
+    dlmwrite(sprintf('./realdata/output/HS/MCMC_beta_%d.txt',qt(i)*100),MCMC_beta,'delimiter','\t','precision','%12.6e');
+    dlmwrite(sprintf('./realdata/output/HS/MCMC_lambda2_%d.txt',qt(i)*100),MCMC_lambda2,'delimiter','\t','precision','%12.6e');
+    dlmwrite(sprintf('./realdata/output/HS/MCMC_tau2_%d.txt',qt(i)*100),MCMC_tau2,'delimiter','\t','precision','%12.6e');
+    dlmwrite(sprintf('./realdata/output/HS/MCMC_sigma_%d.txt',qt(i)*100),MCMC_sigma,'delimiter','\t','precision','%12.6e');
 end
 
-rmpath('Y:/submission/BayesianFQR');
+rmpath('./BayesianFQR');
 
 %% naive Bayesian QR
 
 % add the path of the functions needed to run naive Bayesian FQR
-addpath('Y:/submission/BayesianQR');
+addpath('./BayesianQR');
 
 % for space considerations, we do not provide the posterior samples for 
 % model parameters. However, users can run the code below to generate the
@@ -73,18 +75,18 @@ for i=1:5
     MCMC_betat=result.MCMC_betat;
     MCMC_sigma=result.MCMC_sigma;
     MCMC_betat=MCMC_betat(:,(model.T+1):end);    
-    dlmwrite(sprintf('Y:/submission/realdata/output/QR/MCMC_betat_%d.txt',qt(i)*100),MCMC_betat,'delimiter','\t','precision','%12.6e');
-    dlmwrite(sprintf('Y:/submission/realdata/output/QR/MCMC_sigma_%d.txt',qt(i)*100),MCMC_sigma,'delimiter','\t','precision','%12.6e');
+    dlmwrite(sprintf('./realdata/output/QR/MCMC_betat_%d.txt',qt(i)*100),MCMC_betat,'delimiter','\t','precision','%12.6e');
+    dlmwrite(sprintf('./realdata/output/QR/MCMC_sigma_%d.txt',qt(i)*100),MCMC_sigma,'delimiter','\t','precision','%12.6e');
 end
 
-rmpath('Y:/submission/BayesianQR');
+rmpath('./BayesianQR');
 
 %% Bootstrap-based FQR 
 % Bootstrap-based FQR approaches are implemented using 'quantreg' package 
 % (Koenker, 2017) in R, with post-smoothing on coefficient estimates 
 % by splines or wavelet denoising. 
 
-% Please refer to the R code submission/realdata/realdata_modelfit_bootstrap.R.
+% Please refer to the R code ./realdata/realdata_modelfit_bootstrap.R.
 
 % for space considerations, we only provided the bootstrap samples for 
 % betat obtained by the two-step bootstrap-based FQR with wavelets denoising
@@ -99,12 +101,12 @@ clear;
 qt=[0.1 0.25 0.5 0.75 0.9];
 
 for i1=1:5
-    raw=dlmread(sprintf('Y:/submission/realdata/output/freqQR/raw/BS_betat_%d.txt',qt(i1)*100));
+    raw=dlmread(sprintf('./realdata/output/freqQR/raw/BS_betat_%d.txt',qt(i1)*100));
     smoothed=NaN(size(raw));
     for i=1:size(raw,1)
         smoothed(i,:)=wden(raw(i,:),'heursure','s','mln',4,'db4');
     end
-    dlmwrite(sprintf('Y:/submission/realdata/output/freqQR/wavelets/BS_betat_%d.txt',qt(i1)*100),smoothed,'delimiter','\t','precision','%12.6e');
+    dlmwrite(sprintf('./realdata/output/freqQR/wavelets/BS_betat_%d.txt',qt(i1)*100),smoothed,'delimiter','\t','precision','%12.6e');
     clear smoothed;
 end
 
