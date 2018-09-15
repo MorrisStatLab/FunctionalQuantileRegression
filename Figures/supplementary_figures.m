@@ -15,19 +15,19 @@
 % realdata_modelfit_bootstrap.R to generate the posterior (or bootstrap) samples. 
 % They are also available upon request.
 
-addpath('Y:/submission/Plotfunctions');
+addpath('../Plotfunctions');
 
 alpha=0.05;
 delta=log2(1.5)/2;
 
-x0=dlmread('Y:/submission/realdata/x0.txt');
+x0=dlmread('../realdata/x0.txt');
 
 qt=[0.1 0.25 0.5 0.75 0.9];
 
 for i=1:5
     g=estimation_plots_with_simbas(x0,qt(i),alpha,delta);
-    savefig(g,sprintf('Y:/submission/FigureS4_qt%d.fig',qt(i)*100))
+    savefig(g,sprintf('./FigureS4_qt%d.fig',qt(i)*100))
     close(g)
 end
 
-rmpath('Y:/submission/Plotfunctions');
+rmpath('../Plotfunctions');
