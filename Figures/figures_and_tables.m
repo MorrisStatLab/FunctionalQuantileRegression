@@ -1,6 +1,6 @@
 clear;
 
-%% Assume you are in the subfolder "Figures/" now. May need to change path if necessary.
+%% Assume you are in the subfolder "Figures/" right now. May need to change path if necessary.
 
 %% Figure 1
 load('../realdata/ProteomicsData.mat');
@@ -50,7 +50,7 @@ title('(d)')
 xlabel('m/z(Daltons)')
 ylabel('Intensity (log_2 scale)')
 
-savefig(g,'Y:/submission/Figure1.fig')
+savefig(g,'./Figure1.fig')
 close(g)
 
 clear;
