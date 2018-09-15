@@ -13,11 +13,11 @@ File structure:
 - The subfolder "Code for dwt and idwt/" contains the MATLAB scripts to perform DWT and inverse DWT.
 - The subfolder "BayesianQR/" contains a set of MATLAB scripts to implement the naïve Bayesian Quantile Regression. 
 - In the subfolder "realdata/", the file "ProteomicsData.mat" stores the raw and preprocessed pancreatic cancer mass spectrometry data, and the file "model.mat" stores the block effect adjusted mass spectra _Y_, design matrix _X_, spectral locations _x0_ (in Daltons) and DWT specs. This subfolder also includes the MATLAB code to adjust for block effects, and scripts to implement our proposed Bayesian FQR and various alternatives on the mass spectrometry dataset.
-- The subfolders "simulations1/" and "simulations2/" contain the scripts to generate simulation datasets and implement our proposed model and alternative methods.
+- The subfolders "simulations1/" and "simulations2/" contain the scripts to generate simulation datasets and to implement our proposed model and alternative methods.
 - Other subfolders not described above contain auxiliary functions used for plot or ROC analysis, or various outputs from running the scripts above.
 
 ## Dependency 
-- For our proposed method: MATLAB version 2016b or later (wavelet toolbox needed)
+- For our proposed method: MATLAB version 2016b or later (wavelet toolbox needed).
 - For selected other methods: R version 3.2.2 or later (the packages “quantreg”, “coda” and “FDboost” are needed).
 
 ## Example
@@ -42,7 +42,7 @@ qt=0.9;
 seed=100;     
   
 % Call Bayesian FQR and get posterior samples     
-% It takes about 20 minutes to run on a 64-bit operating system with 2 processors and 256GB RAM       
+% It takes about 20 minutes to run on a 64-bit operating system with 2 processors and 256GB RAM.       
 result=FQR_HS(model, qt, MCMCspecs, seed);     
 MCMC_betat=result.MCMC_betat;   
 
