@@ -4,18 +4,18 @@
 % To reproduce Figure S1-S3, posterior samples for betat and sigma 
 % obtained by Bayesian FQR based on the proteomics dataset at each quantile 
 % level are needed. We do not provide them due to space considerations, 
-% but users can refer to submission/realdata/realdata_modelfit.m to 
+% but users can refer to realdata/realdata_modelfit.m to 
 % generate them. They are also available upon request.
 
 %% Supplementary Figure S4
 % To reproduce Figure S4, posterior (or bootstrap) samples for betat 
 % obtained by each approach based on the proteomics dataset at each
 % quantile are needed. We do not provide them due to space considerations,
-% but users can refer to submission/realdata/realdata_modelfit.m and 
+% but users can refer to realdata/realdata_modelfit.m and 
 % realdata_modelfit_bootstrap.R to generate the posterior (or bootstrap) samples. 
 % They are also available upon request.
 
-%% Assume you are in the subfolder "Figures/" now. May need to change path if necessary.
+%% Assume you are in the subfolder "Figures/" right now. May need to change path if necessary.
 
 addpath('../Plotfunctions');
 
