@@ -23,13 +23,13 @@ File structure:
 ## Example
 Below is an example to run Bayesian FQR on one simulation dataset.
 
-% Load in the dataset, note that the input data must be a structure array that at least includes the _N_ by _T_ data matrix _Y_, the _N_ by _p_ design matrix _X_, the sample size _N_, the grid size _T_, the number of regressors _p_, and a structure array wavespecs that include the DWT and iDWT information.   
+% Load in the dataset, note that the input data must be a structure array that at least includes the _N_ by _T_ data matrix _Y_, the _N_ by _p_ design matrix _X_, the sample size _N_, the grid size _T_, the number of regressors _p_, and a structure array wavespecs that include the DWT and iDWT information.      
 load('simulations1/data/model1.mat');  
 
-% Add the path of the functions needed to run Bayesian FQR
+% Add the path of the functions needed to run Bayesian FQR     
 addpath('BayesianFQR');
 
-% Specify MCMCspecs, and the quantile level desired
+% Specify MCMCspecs, and the quantile level desired     
 MCMCspecs.minVC=1e-6;
 MCMCspecs.maxO=1e20;
 MCMCspecs.B=2000;
@@ -37,13 +37,13 @@ MCMCspecs.burnin=2000;
 MCMCspecs.thin=3;
 MCMCspecs.blocksize=2000;
 
-qt=0.9;
-seed=100;
-
-% call Bayesian FQR and get posterior samples for the coefficient function corresponding to the group difference
-result=FQR_HS(model, qt, MCMCspecs, seed);
-MCMC_betat=result.MCMC_betat;
-MCMC_P=MCMC_betat(:,(model.T+1):end); % MCMC_P is a _B_ by _T_ matrix containing _B_ posterior samples
+qt=0.9;  
+seed=100;  
+  
+% call Bayesian FQR and get posterior samples for the coefficient function corresponding to the group difference    
+result=FQR_HS(model, qt, MCMCspecs, seed);     
+MCMC_betat=result.MCMC_betat;    
+MCMC_P=MCMC_betat(:,(model.T+1):end); % MCMC_P is a _B_ by _T_ matrix containing _B_ posterior samples   
 
 
 ## Reproducibility 
