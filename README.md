@@ -23,6 +23,8 @@ File structure:
 ## Example
 Below is an example to run Bayesian FQR on one simulation dataset.
 
+```
+
 % Load in the dataset    
 % Note that the input data must be a structure array that at least includes the _N_ by _T_ data matrix _Y_, the _N_ by _p_ design matrix _X_, the sample size _N_, the grid size _T_, the number of regressors _p_, and a structure array _wavespecs_ that includes the DWT and iDWT information. Before running Bayesian FQR, please make sure your input data have the same structure as the following example, and refer to "simulations1/simdata2.m" or "simulations2/simdata2.m" to see how to generate such a structure array in MATLAB.         
 load('simulations1/data/model1.mat');  
@@ -49,6 +51,7 @@ MCMC_betat=result.MCMC_betat;
 % MCMC_P is a _B_ by _T_ matrix containing _B_ posterior samples for the regression coefficient function coding the group difference.        
 MCMC_P=MCMC_betat(:,(model.T+1):end);    
 
+```
 
 ## Reproducibility 
 
