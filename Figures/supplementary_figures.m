@@ -15,6 +15,8 @@
 % realdata_modelfit_bootstrap.R to generate the posterior (or bootstrap) samples. 
 % They are also available upon request.
 
+%% Assume you are in the subfolder "Figures/" now. May need to change path if necessary.
+
 addpath('../Plotfunctions');
 
 alpha=0.05;
