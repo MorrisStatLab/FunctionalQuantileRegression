@@ -6,9 +6,9 @@
 
 # Figure S1 and S2
 
-setwd("Y:/submission")
+setwd("./")
 
-source("Y:/submission/Plotfunctions/traceplot.R")
+source("../Plotfunctions/traceplot.R")
 
 idx <- seq(100,1600,100)
 
@@ -22,7 +22,7 @@ for(i in 1:5)
 
 # Figure S3
 
-source("Y:/submission/Plotfunctions/geweke.R")
+source("../Plotfunctions/geweke.R")
 
 # relies on the "coda" package to calculate Geweke test statistics
 geweke(0.1)
@@ -41,23 +41,23 @@ geweke(0.9)
 [1] 0.05937312 0.11573237
 
 
-load("Y:/submission/realdata/output/geweke_pvalues_Bayesian_FQR_qt10.RData")
+load("../realdata/output/geweke_pvalues_Bayesian_FQR_qt10.RData")
 pvalues1 <- c(pvalue[[1]],pvalue[[2]])
 
-load("Y:/submission/realdata/output/geweke_pvalues_Bayesian_FQR_qt25.RData")
+load("../realdata/output/geweke_pvalues_Bayesian_FQR_qt25.RData")
 pvalues2 <- c(pvalue[[1]],pvalue[[2]])
 
-load("Y:/submission/realdata/output/geweke_pvalues_Bayesian_FQR_qt50.RData")
+load("../realdata/output/geweke_pvalues_Bayesian_FQR_qt50.RData")
 pvalues3 <- c(pvalue[[1]],pvalue[[2]])
 
-load("Y:/submission/realdata/output/geweke_pvalues_Bayesian_FQR_qt75.RData")
+load("../realdata/output/geweke_pvalues_Bayesian_FQR_qt75.RData")
 pvalues4 <- c(pvalue[[1]],pvalue[[2]])
 
-load("Y:/submission/realdata/output/geweke_pvalues_Bayesian_FQR_qt90.RData")
+load("../realdata/output/geweke_pvalues_Bayesian_FQR_qt90.RData")
 pvalues5 <- c(pvalue[[1]],pvalue[[2]])
 
 
-png("Y:/submission/FigureS3.png",width = 960, height = 960)
+png("./FigureS3.png",width = 960, height = 960)
 par(mfrow=c(3,2))
 hist(pvalues1,ylim=c(0,1.25),freq=FALSE,cex.lab=2,xlab="Geweke p-value",cex.lab = 1.8,main="(a)", cex.main=2.5)
 hist(pvalues2,ylim=c(0,1.25),freq=FALSE,cex.lab=2,xlab="Geweke p-value",cex.lab = 1.8,main="(b)", cex.main=2.5)
