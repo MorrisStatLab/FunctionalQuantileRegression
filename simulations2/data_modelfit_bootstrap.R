@@ -1,8 +1,8 @@
-setwd("Y:/submission/simulations2")
+# Assume you are in the subfolder "simulations2/" right now. May need to change the path if necessary.
 
-X <- read.table("X.txt",header=FALSE,sep="\t")
+X <- read.table("./X.txt",header=FALSE,sep="\t")
 
-time <- read.table("x0.txt",header=FALSE,sep="\t")
+time <- read.table("./x0.txt",header=FALSE,sep="\t")
 
 time <- as.numeric(time[,1])
 
@@ -10,22 +10,21 @@ qt <- c(0.1,0.2,0.5,0.8,0.9)
 
 # Bootstrap-based FQR relies on the "quantreg" package, so please install it before running the code
 
-source("Y:/submission/freqQR.R")
+source("../freqQR.R")
 
 
-setwd("data")
 
 # for space considerations, we do not provide the bootstrap samples. Users can run the script below to generate them, and they are also available upon request.
 # for each replicate, it takes about 70 minutes to fit the model (for all quantiles) on a 64-bit operating system with 2 processors and 256GB RAM
 
 for(i in 1:100)
 {
-   Y <- read.table(paste0("model",i,".txt"),header=FALSE,sep="\t")   
+   Y <- read.table(paste0("./data/model",i,".txt"),header=FALSE,sep="\t")   
    result <- freqQR(Y=Y,X=X,time=time,qt=qt,B=2000)
 
-   write.table(result$coef4,paste0("Y:/submission/simulations2/output/freqQR/raw/BS_betat_80_rep_",i,".txt"),quote=FALSE,sep="\t",row.names=FALSE,col.names=FALSE)
-   write.table(result$coef5,paste0("Y:/submission/simulations2/output/freqQR/raw/BS_betat_90_rep_",i,".txt"),quote=FALSE,sep="\t",row.names=FALSE,col.names=FALSE)
+   write.table(result$coef4,paste0("./output/freqQR/raw/BS_betat_80_rep_",i,".txt"),quote=FALSE,sep="\t",row.names=FALSE,col.names=FALSE)
+   write.table(result$coef5,paste0("./output/freqQR/raw/BS_betat_90_rep_",i,".txt"),quote=FALSE,sep="\t",row.names=FALSE,col.names=FALSE)
 
-   write.table(result$coef4.ss,paste0("Y:/submission/simulations2/output/freqQR/splines/BS_betat_80_rep_",i,".txt"),quote=FALSE,sep="\t",row.names=FALSE,col.names=FALSE)
-   write.table(result$coef5.ss,paste0("Y:/submission/simulations2/output/freqQR/splines/BS_betat_90_rep_",i,".txt"),quote=FALSE,sep="\t",row.names=FALSE,col.names=FALSE)
+   write.table(result$coef4.ss,paste0("./output/freqQR/splines/BS_betat_80_rep_",i,".txt"),quote=FALSE,sep="\t",row.names=FALSE,col.names=FALSE)
+   write.table(result$coef5.ss,paste0("./output/freqQR/splines/BS_betat_90_rep_",i,".txt"),quote=FALSE,sep="\t",row.names=FALSE,col.names=FALSE)
 }
