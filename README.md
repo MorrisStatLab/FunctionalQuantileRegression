@@ -60,4 +60,4 @@ All the figures and tables in the paper can be reproduced by running the provide
 
 ## Reference
 
-Yusha Liu, Meng Li and Jeffrey S. Morris (2018). Function-on-Scalar Quantile Regression with Application to Mass Spectrometry Proteomics Data. 
+Yusha Liu, Meng Li and Jeffrey S. Morris (2018). Function-on-Scalar Quantile Regression with Application to Mass Spectrometry Proteomics Data. <https://arxiv.org/abs/1809.00266>
