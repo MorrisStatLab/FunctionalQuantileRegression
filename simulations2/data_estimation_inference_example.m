@@ -1,14 +1,16 @@
 clear;
 
+% Assume you are in the subfolder "simulations2/" right now. May need to change path if necessary.
+
 % observed grid and groud truth
-x0=dlmread('Y:/submission/simulations2/x0.txt');
-beta2=dlmread('Y:/submission/simulations2/beta2.txt');
+x0=dlmread('./x0.txt');
+beta2=dlmread('./beta2.txt');
 
 T=size(beta2,2);
 
 % add the path of the functions needed to calculate SimBaS, sensitivity
 % and false positive
-addpath('Y:/submission/ROCfunctions');
+addpath('../ROCfunctions');
 
 %% For space considerations, we do not provide the posterior (or bootstrap)
 % samples based on the simulated datasets, but we illustrate below how to 
@@ -39,7 +41,7 @@ alpha=[0.0005 0.001:0.001:0.005 0.01:0.01:0.99 0.995 0.999 0.9995];
 
 %% naive Bayesian QR
 % load in posterior samples of Beta_2(t)
-load(sprintf('Y:/submission/simulations2/output/QR/MCMC_betat_%d_rep_1.mat',qt*100));
+load(sprintf('./output/QR/MCMC_betat_%d_rep_1.mat',qt*100));
 
 % sensitivity and false positive for identifying a group difference of at
 % least delta2 at various alpha levels for this replicate dataset
@@ -57,7 +59,7 @@ sum(sum(tmp1.^2))/size(MCMC_P,1)
 
 %% Bayesian FQR with horseshoe prior
 % load in posterior samples of Beta_2(t)
-load(sprintf('Y:/submission/simulations2/output/HS/MCMC_betat_%d_rep_1.mat',qt*100));
+load(sprintf('./output/HS/MCMC_betat_%d_rep_1.mat',qt*100));
 
 % sensitivity and false positive for identifying a group difference of at
 % least delta2 at various alpha levels for this replicate dataset
@@ -75,7 +77,7 @@ sum(sum(tmp2.^2))/size(MCMC_P,1)
 
 %% Bootstrap-based QR
 % load in bootstrap samples of Beta_2(t)
-BS_P=dlmread(sprintf('Y:/submission/simulations2/output/freqQR/raw/BS_betat_%d_rep_1.txt',qt*100));
+BS_P=dlmread(sprintf('./output/freqQR/raw/BS_betat_%d_rep_1.txt',qt*100));
 
 % sensitivity and false positive for identifying a group difference of at
 % least delta2 at various alpha levels for this replicate dataset
@@ -93,7 +95,7 @@ sum(sum(tmp3.^2))/size(BS_P,1)
 
 %% Bootstrap-based QR with spline smoothing
 % load in bootstrap samples of Beta_2(t)
-BS_P=dlmread(sprintf('Y:/submission/simulations2/output/freqQR/splines/BS_betat_%d_rep_1.txt',qt*100));
+BS_P=dlmread(sprintf('./output/freqQR/splines/BS_betat_%d_rep_1.txt',qt*100));
 
 % sensitivity and false positive for identifying a group difference of at
 % least delta2 at various alpha levels for this replicate dataset
@@ -111,7 +113,7 @@ sum(sum(tmp4.^2))/size(BS_P,1)
 
 %% Bootstrap-based QR with wavelet denoising
 % load in bootstrap samples of Beta_2(t)
-BS_P=dlmread(sprintf('Y:/submission/simulations2/output/freqQR/wavelets/BS_betat_%d_rep_1.txt',qt*100));
+BS_P=dlmread(sprintf('./output/freqQR/wavelets/BS_betat_%d_rep_1.txt',qt*100));
 
 % sensitivity and false positive for identifying a group difference of at
 % least delta2 at various alpha levels for this replicate dataset
