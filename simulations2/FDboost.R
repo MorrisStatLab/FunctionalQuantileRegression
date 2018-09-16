@@ -1,16 +1,16 @@
-setwd("Y:/submission/simulations2")
+# Assume you are in the subfolder "simulations2/" right now. May need to change path if necessary.
 
 library(FDboost)
 
-X <- read.table("X.txt",header=FALSE,sep="\t")
+X <- read.table("./X.txt",header=FALSE,sep="\t")
 
-x0 <- read.table("x0.txt",header=FALSE,sep="\t")
+x0 <- read.table("./x0.txt",header=FALSE,sep="\t")
 
 x0 <- as.numeric(x0[,1])
 
 
 # replicate 1
-Y <- read.table("data/model1.txt",header=FALSE,sep="\t")
+Y <- read.table("./data/model1.txt",header=FALSE,sep="\t")
 data <- list(Y = as.matrix(Y), group = as.factor(X[,2]), time = x0, group1 = as.factor(1*(X[,2]==1)) )
 
 
@@ -147,7 +147,7 @@ plot(model,main="Intercept function for tau=0.9\nnumber of boosting iterations=2
 
 model.coef <- coef(model)$smterms
 
-save(model.coef,file="output/FDboost/fitmodel1.RData")
+save(model.coef,file="./output/FDboost/fitmodel1.RData")
 
 
 
@@ -292,7 +292,7 @@ plot(model,main="Intercept function for tau=0.9\nnumber of boosting iterations=1
 # for space considerations, the replicate datasets 2-10 are not provided but are available upon request.
 for (i in 2:10)
 {
-   Y <- read.table(paste0("data/model",i,".txt"),header=FALSE,sep="\t")
+   Y <- read.table(paste0("./data/model",i,".txt"),header=FALSE,sep="\t")
 
    data <- list(Y=as.matrix(Y),group=as.factor(X[,2]),time=x0)
 
@@ -308,7 +308,7 @@ for (i in 2:10)
 
    model.coef <- coef(model)$smterms
 
-   save(model.coef,file=paste0("output/FDboost/fitmodel",i,".RData"))
+   save(model.coef,file=paste0("./output/FDboost/fitmodel",i,".RData"))
 }
 
 
