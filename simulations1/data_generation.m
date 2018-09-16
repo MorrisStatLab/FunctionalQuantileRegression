@@ -1,16 +1,18 @@
 clear;
 
+% Assume you are in the subfolder "simulations1/" right now. May need to change path if necessary.
+
 % add the path of the code.
-addpath('Y:/submission/simulations1'); 
-addpath('Y:/submission/Code for dwt and idwt');
+addpath('./'); 
+addpath('../Code for dwt and idwt');
 
 %% ground truth
 % the discrete grid on which functional data are observed
 x=linspace(0,15,501)';
-dlmwrite(strcat('Y:/submission/simulations1','/x0.txt'),x,'delimiter','\t','precision','%12.6e');
+dlmwrite('./x0.txt',x,'delimiter','\t','precision','%12.6e');
 
 % Gaussian kernels as described in Table1 in the manuscript
-kernels=dlmread(strcat('Y:/submission/simulations1','/kernels.txt'));
+kernels=dlmread('./kernels.txt');
 
 sigma=3;
 
@@ -25,8 +27,8 @@ beta1=(quantiles1+quantiles2)/2;
 beta2=(quantiles1-quantiles2)/2;
 
 % save groud truth of Beta for different quantiles
-dlmwrite(strcat('Y:/submission/simulations1','/beta1.txt'),beta1,'delimiter','\t','precision','%12.6e');
-dlmwrite(strcat('Y:/submission/simulations1','/beta2.txt'),beta2,'delimiter','\t','precision','%12.6e');
+dlmwrite('./beta1.txt',beta1,'delimiter','\t','precision','%12.6e');
+dlmwrite('./beta2.txt',beta2,'delimiter','\t','precision','%12.6e');
 
 % plot the ground truth for different quantiles
 figure;
@@ -56,7 +58,7 @@ hold off
 %% specify design matrix X
 X=ones(400,2);
 X(201:end,2)=-1;
-dlmwrite('Y:/submission/simulations1/X.txt',X,'delimiter','\t','precision','%12.6e');
+dlmwrite('./X.txt',X,'delimiter','\t','precision','%12.6e');
 
 %% discrete wavelet transform (DWT) specifications
 wavespecs.wtmode='per';
@@ -72,8 +74,8 @@ wavespecs.compress=1;
 % All replicates are also available upon request.
 for i=1:100
     model=simdata2(x,kernels(:,1),kernels(:,2),sigma,0.8,15,200,wavespecs);
-    save(sprintf('Y:/submission/simulations1/data/model%d.mat',i),'model');
-    dlmwrite(sprintf('Y:/submission/simulations1/data/model%d.txt',i),model.Y,'delimiter','\t','precision','%12.6e');
+    save(sprintf('./data/model%d.mat',i),'model');
+    dlmwrite(sprintf('./data/model%d.txt',i),model.Y,'delimiter','\t','precision','%12.6e');
 end
 
 
