@@ -1,9 +1,9 @@
-# Functional Quantile Regression
+# Bayesian Function-on-Scalar Quantile Regression
 
-A method to perform Bayesian functional quantile regression. The proposed method is applicable to data sets given the _N_ by _T_ matrix of response functions _Y_ and _N_ by _p_ design matrix _X_ for functional quantile regression. 
+A method to perform Bayesian function-on-scalar quantile regression, i.e., Bayesian FQR. The proposed method is applicable to data sets given the _N_ by _T_ matrix of response functions _Y_ and _N_ by _p_ design matrix _X_ for function-on-scalar quantile regression. 
 
 This repository provides 
-- a set of MATLAB scripts to implement our proposed Bayesian Functional Quantile Regression model (adjusted or unadjusted), and the naïve pointwise Bayesian Quantile Regression; 
+- a set of MATLAB scripts to implement our proposed Bayesian FQR model (adjusted or unadjusted), and the naïve pointwise Bayesian quantile regression; 
 - R scripts to implement the bootstrap-based approaches which were compared to our proposed model in the paper; 
 - the code to reproduce all the figures in the paper;
 - the code to adjust for block effects from the preprocessed mass spectrometry data and to generate the simulation datasets.
@@ -11,7 +11,7 @@ This repository provides
 File structure: 
 - The subfolder "BayesianFQR/" contains a set of MATLAB scripts to implement the Bayesian FQR model with discrete wavelet transform (DWT) on regression coefficient functions and a horseshoe prior on wavelet coefficients.
 - The subfolder "BayesianFQR_corrected_likelihood/" contains a set of MATLAB scripts to implement the adjusted version of the Bayesian FQR model using sandwich likelihood correction (see Section 2.4 in the paper) with discrete wavelet transform (DWT) on regression coefficient functions and a horseshoe prior on wavelet coefficients.
-- The subfolder "BayesianQR/" contains a set of MATLAB scripts to implement the naïve pointwise Bayesian Quantile Regression using asymmetric Laplace likelihood.
+- The subfolder "BayesianQR/" contains a set of MATLAB scripts to implement the naïve pointwise Bayesian quantile regression using asymmetric Laplace likelihood.
 - The subfolder "Code for dwt and idwt/" contains the MATLAB scripts to perform DWT and inverse DWT.
 - In the subfolder "realdata/", the file "ProteomicsData.mat" stores the raw and preprocessed pancreatic cancer mass spectrometry data, and the file "model.mat" stores the block effect adjusted mass spectra _Y_, design matrix _X_, spectral locations _x0_ (in Daltons) and DWT specs. This subfolder also includes the MATLAB code to adjust for block effects, and scripts to implement our proposed Bayesian FQR and various alternatives on the mass spectrometry dataset.
 - The subfolders "simulations_continuous_x/" contain the scripts to generate simulation datasets and to implement our proposed model and alternative methods.
