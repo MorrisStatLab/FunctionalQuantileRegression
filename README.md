@@ -57,7 +57,7 @@ MCMC_P=MCMC_betat(:,(model.T+1):end);
 
 ## Reproducibility 
 
-All the figures in the paper can be reproduced by running the provided code. Note that to reproduce Table 2 that summarizes the simulation performance for various methods, the posterior (or bootstrap) samples obtained by each approach at each considered quantile level based on each of 100 replicate datasets in each simulation setting are needed. Please refer to ```Reproducibility.md``` for more details about how to fully reproduce results in the paper. 
+All the figures in the paper can be reproduced by running the provided code. Note that to reproduce Table 2 that summarizes the simulation performance for various methods, the posterior (or bootstrap) samples obtained by each approach at each considered quantile level based on the 100 replicate datasets are needed. Please refer to ```Reproducibility.md``` for more details about how to fully reproduce results in the paper. 
 
 ## Reference
 
